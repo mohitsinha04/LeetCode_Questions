@@ -26,3 +26,25 @@ Explanation: The given undirected graph will be like this:
     4 - 3
     
 */
+
+class Solution {
+public:
+    vector<int> findRedundantConnection(vector<vector<int>>& edges) {
+        vector<int> disjoint_set(2001);
+        for(int i = 0; i < 2001; i++)
+            disjoint_set[i] = i;
+        for(auto i : edges) {
+            int p = findset(disjoint_set, i[0]);
+            int q = findset(disjoint_set, i[1]);
+            
+            if(p == q) return i;
+            disjoint_set[p] = q;
+        }
+        return {};
+    }
+    int findset(vector<int>& disjoint_set, int p) {
+        if(disjoint_set[p] != p)
+            disjoint_set[p] = findset(disjoint_set, disjoint_set[p]);
+        return disjoint_set[p];
+    }
+};
