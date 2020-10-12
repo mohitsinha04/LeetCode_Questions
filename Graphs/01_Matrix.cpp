@@ -31,8 +31,10 @@ Output:
  
  */
 
+//this is basically shortest distance problem using bfs 
 class Solution {
 public:
+ //we have explore four directions!
     vector<vector<int>> dir{{1,0}, {-1, 0}, {0,-1}, {0,1}};
     vector<vector<int>> updateMatrix(vector<vector<int>>& matrix) {
         if(matrix.size() == 0) return matrix;
@@ -42,10 +44,11 @@ public:
                 if(matrix[i][j] == 1) 
                     matrix[i][j] = -1;
                 else
-                    q.push({i, j});
+                    q.push({i, j}); //pushing the i and j
             }
         }
         int level = 1;
+        //classic bfs
         while(!q.empty()) {
             int size = q.size();
             for(int k = 0; k < size; k++) {
