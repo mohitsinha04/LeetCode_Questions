@@ -1,3 +1,4 @@
+[Discussion Post (created on 29/0/2021 at 23:55)](https://leetcode.com/problems/find-distance-in-a-binary-tree/submissions/)  
 <h2>1740. Find Distance in a Binary Tree</h2><h3>Medium</h3><hr><div><p>Given the root of a binary tree and two integers <code>p</code> and <code>q</code>, return <em>the <strong>distance</strong> between the nodes of value </em><code>p</code><em> and value </em><code>q</code><em> in the tree</em>.</p>
 
 <p>The <strong>distance</strong> between two nodes is the number of edges on the path from one to the other.</p>
