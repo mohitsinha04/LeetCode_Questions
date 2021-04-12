@@ -1,30 +1,29 @@
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
-        if (nums.empty()) { return 0; } 
-        vector<int> tail;  // keep tail value of each possible len
-        tail.push_back(nums[0]);
-        for (auto n : nums) {
-            if (n <= tail[0]) {
-                tail[0] = n;
-            } else if (n > tail.back()) { // large than the tail of current largest len 
-                tail.push_back(n);
-            } else {  // find smallest one which is >= n
-                int left = 0; 
-                int right = tail.size()-1;
+        if(nums.size() == 0) return 0;
+        vector<int> tails;
+        tails.push_back(nums[0]);
+        
+        for(int n : nums) {
+            if(n <= tails[0]) tails[0] = n;
+            else if(n > tails[tails.size() - 1]) tails.push_back(n);
+            else {
+                int left = 0;
+                int right = tails.size() - 1;
                 int res = left;
                 while(left <= right) {
-                    int mid = left + (right-left)/2;
-                    if (tail[mid] >= n) {
+                    int mid = left + (right - left)/2;
+                    if(tails[mid] >= n) {
                         res = mid;
-                        right = mid-1;
-                    } else { // tail[mid] < n
-                        left = mid+1;
+                        right = mid - 1;
+                    } else {
+                        left = mid + 1;
                     }
                 }
-                tail[res] = n;
+                tails[res] = n;
             }
         }
-        return tail.size();
+        return tails.size();
     }
 };
